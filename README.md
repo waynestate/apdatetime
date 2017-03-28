@@ -3,7 +3,6 @@ AP Datetime modifier
 
 Add to an existing project:
 
-    composer config repositories.apdatetime vcs git@bitbucket.org:waynestate/apdatetime.git
     composer require waynestate/apdatetime
 
 Usage
