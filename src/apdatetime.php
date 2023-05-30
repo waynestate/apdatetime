@@ -1,9 +1,13 @@
 <?php
 
-if(!function_exists('apdatetime')){
+if(!function_exists('apdatetime')) {
+    /**
+     * @param $string
+     * @return mixed
+     */
     function apdatetime($string)
     {
-        $search = [
+        $monthSearch = [
             '/\bJan\b/',
             '/\bFeb\b/',
             '/\bMar\b/',
@@ -15,14 +19,10 @@ if(!function_exists('apdatetime')){
             '/\bSep\b/',
             '/\bOct\b/',
             '/\bNov\b/',
-            '/\bDec\b/',
-            '/\bAM\b/',
-            '/\bPM\b/',
-            '/\bam\b/',
-            '/\bpm\b/',
+            '/\bDec\b/'
         ];
 
-        $replace = [
+        $monthReplace = [
             'Jan.',
             'Feb.',
             'March',
@@ -34,15 +34,39 @@ if(!function_exists('apdatetime')){
             'Sept.',
             'Oct.',
             'Nov.',
-            'Dec.',
-            'a.m.',
-            'p.m.',
-            'a.m.',
-            'p.m.',
+            'Dec.'
         ];
 
-        $string = preg_replace($search, $replace, $string);
+        $string = preg_replace($monthSearch, $monthReplace, $string);
 
-        return $string;
+        $meridiemSearch = [
+            '/\bAM\b/',
+            '/\bPM\b/',
+            '/\bam\b/',
+            '/\bpm\b/',
+        ];
+
+        $meridiemReplace = [
+            'a.m.',
+            'p.m.',
+            'a.m.',
+            'p.m.'
+        ];
+
+        $string = preg_replace($meridiemSearch, $meridiemReplace, $string);
+
+        $otherSearch = [
+            '/\b:00 (a\.m\.|p\.m\.)/',
+            '/\b12 (p\.m\.)/',
+            '/\b12 (a\.m\.)/',
+        ];
+
+        $otherReplace = [
+            ' $1',
+            'noon',
+            'midnight',
+        ];
+
+        return preg_replace($otherSearch, $otherReplace, $string);
     }
 }
