@@ -9,148 +9,166 @@ class APDateTimeTest extends TestCase {
     /**
      * @test
      */
-    public function AM()
+    public function testAM()
     {
         $datetime = apdatetime(date('g:i a', strtotime('08:00:00')));
-        $this->assertEquals('8:00 a.m.', $datetime);
+        $this->assertEquals('8 a.m.', $datetime);
     }
 
     /**
      * @test
      */
-    public function PM()
+    public function testPM()
     {
         $datetime = apdatetime(date('g:i a', strtotime('14:00:00')));
-        $this->assertEquals('2:00 p.m.', $datetime);
+        $this->assertEquals('2 p.m.', $datetime);
     }
 
     /*
      * @test
      */
-    public function adotm_pdotm()
+    public function testAdotm_pdotm()
     {
         $datetime = apdatetime(date('g:i a', strtotime('08:00:00')));
-        $this->assertEquals('8:00 a.m.', $datetime);
+        $this->assertEquals('8 a.m.', $datetime);
 
-        $datetime = apdatetime(date('g:i a', strotime('14:00:00')));
-        $this->assertEquals('2:00 p.m.', $datetime);
+        $datetime = apdatetime(date('g:i a', strtotime('14:00:00')));
+        $this->assertEquals('2 p.m.', $datetime);
+    }
+
+    /*
+     * @test
+     */
+    public function testNoon()
+    {
+        $datetime = apdatetime(date('g:i a', strtotime('12:00:00')));
+        $this->assertEquals('noon', $datetime);
     }
 
     /**
      * @test
      */
-    public function January()
+    public function testTwothirty()
+    {
+        $datetime = apdatetime(date('g:i a', strtotime('14:30:00')));
+        $this->assertEquals('2:30 p.m.', $datetime);
+    }
+
+    /**
+     * @test
+     */
+    public function testJanuary()
     {
         // Short month
         $datetime = apdatetime(date('M j, Y g:i a', strtotime('2015-01-01 14:00:00')));
-        $this->assertEquals('Jan. 1, 2015 2:00 p.m.', $datetime);
+        $this->assertEquals('Jan. 1, 2015 2 p.m.', $datetime);
 
         // Full month (should not be affected)
         $datetime = apdatetime(date('F j, Y g:i a', strtotime('2015-01-01 14:00:00')));
-        $this->assertEquals('January 1, 2015 2:00 p.m.', $datetime);
+        $this->assertEquals('January 1, 2015 2 p.m.', $datetime);
     }
 
     /**
      * @test
      */
-    public function February()
+    public function testFebruary()
     {
         $datetime = apdatetime(date('M j, Y g:i a', strtotime('2015-02-01 14:00:00')));
-        $this->assertEquals('Feb. 1, 2015 2:00 p.m.', $datetime);
+        $this->assertEquals('Feb. 1, 2015 2 p.m.', $datetime);
     }
 
     /**
      * @test
      */
-    public function March()
+    public function testMarch()
     {
         $datetime = apdatetime(date('M j, Y g:i a', strtotime('2015-03-01 14:00:00')));
-        $this->assertEquals('March 1, 2015 2:00 p.m.', $datetime);
+        $this->assertEquals('March 1, 2015 2 p.m.', $datetime);
     }
 
     /**
      * @test
      */
-    public function April()
+    public function testApril()
     {
         $datetime = apdatetime(date('M j, Y g:i a', strtotime('2015-04-01 14:00:00')));
-        $this->assertEquals('April 1, 2015 2:00 p.m.', $datetime);
+        $this->assertEquals('April 1, 2015 2 p.m.', $datetime);
     }
 
     /**
      * @test
      */
-    public function May()
+    public function testMay()
     {
         // Short month
         $datetime = apdatetime(date('M j, Y g:i a', strtotime('2015-05-01 14:00:00')));
-        $this->assertEquals('May 1, 2015 2:00 p.m.', $datetime);
+        $this->assertEquals('May 1, 2015 2 p.m.', $datetime);
 
         // Full month (should not be affected)
         $datetime = apdatetime(date('M j, Y g:i a', strtotime('2015-05-01 14:00:00')));
-        $this->assertEquals('May 1, 2015 2:00 p.m.', $datetime);
+        $this->assertEquals('May 1, 2015 2 p.m.', $datetime);
     }
 
     /**
      * @test
      */
-    public function June()
+    public function testJune()
     {
         $datetime = apdatetime(date('M j, Y g:i a', strtotime('2015-06-01 14:00:00')));
-        $this->assertEquals('June 1, 2015 2:00 p.m.', $datetime);
+        $this->assertEquals('June 1, 2015 2 p.m.', $datetime);
     }
 
     /**
      * @test
      */
-    public function July()
+    public function testJuly()
     {
         $datetime = apdatetime(date('M j, Y g:i a', strtotime('2015-07-01 14:00:00')));
-        $this->assertEquals('July 1, 2015 2:00 p.m.', $datetime);
+        $this->assertEquals('July 1, 2015 2 p.m.', $datetime);
     }
 
     /**
      * @test
      */
-    public function August()
+    public function testAugust()
     {
         $datetime = apdatetime(date('M j, Y g:i a', strtotime('2015-08-01 14:00:00')));
-        $this->assertEquals('Aug. 1, 2015 2:00 p.m.', $datetime);
+        $this->assertEquals('Aug. 1, 2015 2 p.m.', $datetime);
     }
 
     /**
      * @test
      */
-    public function September()
+    public function testSeptember()
     {
         $datetime = apdatetime(date('M j, Y g:i a', strtotime('2015-09-01 14:00:00')));
-        $this->assertEquals('Sept. 1, 2015 2:00 p.m.', $datetime);
+        $this->assertEquals('Sept. 1, 2015 2 p.m.', $datetime);
     }
 
     /**
      * @test
      */
-    public function October()
+    public function testOctober()
     {
         $datetime = apdatetime(date('M j, Y g:i a', strtotime('2015-10-01 14:00:00')));
-        $this->assertEquals('Oct. 1, 2015 2:00 p.m.', $datetime);
+        $this->assertEquals('Oct. 1, 2015 2 p.m.', $datetime);
     }
 
     /**
      * @test
      */
-    public function November()
+    public function testNovember()
     {
         $datetime = apdatetime(date('M j, Y g:i a', strtotime('2015-11-01 14:00:00')));
-        $this->assertEquals('Nov. 1, 2015 2:00 p.m.', $datetime);
+        $this->assertEquals('Nov. 1, 2015 2 p.m.', $datetime);
     }
 
     /**
      * @test
      */
-    public function December()
+    public function testDecember()
     {
         $datetime = apdatetime(date('M j, Y g:i a', strtotime('2015-12-01 14:00:00')));
-        $this->assertEquals('Dec. 1, 2015 2:00 p.m.', $datetime);
+        $this->assertEquals('Dec. 1, 2015 2 p.m.', $datetime);
     }
 }
