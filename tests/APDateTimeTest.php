@@ -45,6 +45,15 @@ class APDateTimeTest extends TestCase {
         $this->assertEquals('noon', $datetime);
     }
 
+    /*
+     * @test
+     */
+    public function testMidnight()
+    {
+        $datetime = apdatetime(date('g:i a', strtotime('0:00:00')));
+        $this->assertEquals('midnight', $datetime);
+    }
+
     /**
      * @test
      */

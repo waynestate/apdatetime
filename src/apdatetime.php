@@ -58,11 +58,13 @@ if(!function_exists('apdatetime')) {
         $otherSearch = [
             '/\b:00 (a\.m\.|p\.m\.)/',
             '/\b12 (p\.m\.)/',
+            '/\b12 (a\.m\.)/',
         ];
 
         $otherReplace = [
             ' $1',
             'noon',
+            'midnight',
         ];
 
         return preg_replace($otherSearch, $otherReplace, $string);
