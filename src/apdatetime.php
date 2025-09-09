@@ -57,8 +57,8 @@ if(!function_exists('apdatetime')) {
 
         $otherSearch = [
             '/\b:00 (a\.m\.|p\.m\.)/',
-            '/\b12 (p\.m\.)/',
-            '/\b12 (a\.m\.)/',
+            '/(?<!:)\b12(?:\s*|:00) p\.m\./',
+            '/(?<!:)\b12(?:\s*|:00) a\.m\./',
         ];
 
         $otherReplace = [
