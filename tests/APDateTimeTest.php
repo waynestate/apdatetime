@@ -180,4 +180,13 @@ class APDateTimeTest extends TestCase {
         $datetime = apdatetime(date('M j, Y g:i a', strtotime('2015-12-01 14:00:00')));
         $this->assertEquals('Dec. 1, 2015 2 p.m.', $datetime);
     }
+
+    /**
+     * @test
+     */
+    public function test_should_not_convert_to_noon_if_minute_ends_with_twelve()
+    {
+        $datetime = apdatetime(date('M j, Y g:i a', strtotime('2015-12-01 13:12:00')));
+        $this->assertEquals('Dec. 1, 2015 1:12 p.m.', $datetime);
+    }
 }
